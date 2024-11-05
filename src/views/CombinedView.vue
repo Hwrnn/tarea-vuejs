@@ -1,16 +1,11 @@
 <template>
     <div class="container mt-4">
-        <!-- Título centralizado -->
         <h1 class="text-center text-primary mb-4">Lista de Tareas</h1>
-
-        <!-- Input para añadir nuevas tareas -->
         <div class="input-group mb-3">
             <input v-model="newTask" @keyup.enter="addTask" placeholder="Añadir nueva tarea"
                 class="form-control task-input" aria-label="Nueva tarea" />
             <button @click="addTask" class="btn btn-primary">Añadir</button>
         </div>
-
-        <!-- Mostrar las tareas obtenidas de la API automáticamente -->
         <div class="row mt-4">
             <div class="col-12 mb-4" v-for="task in tasks" :key="task.id">
                 <div class="card mb-3">
