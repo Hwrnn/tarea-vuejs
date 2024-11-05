@@ -4,10 +4,9 @@
         <div class="input-group mb-3">
             <input v-model="newTask" @keyup.enter="addTask" placeholder="Añadir nueva tarea"
                 class="form-control task-input" aria-label="Nueva tarea" />
-            <button @click="addTask" class="btn btn-primary">Añadir</button>
+            <button @click="addTask" class="btn btn-primary">Añadir.</button>
         </div>
 
-        <!-- Nueva Sección: Mostrar tareas añadidas -->
         <div class="row mt-4" v-if="tasks.length > 0">
             <div class="col-12 mb-4" v-for="task in tasks" :key="task.id">
                 <div class="card mb-3">
@@ -43,30 +42,28 @@ export default {
     name: "AddTask",
     data() {
         return {
-            newTask: "", // Tarea nueva ingresada en el input
-            tasks: [], // Arreglo local de tareas
+            newTask: "",
+            tasks: [],
         };
     },
     methods: {
         addTask() {
             if (this.newTask.trim() === "") return;
 
-            // Crear una nueva tarea
+           
             const newTask = {
                 todo: this.newTask,
                 completed: false,
-                id: Date.now(), // Generar un ID único
+                id: Date.now(),
             };
 
-            this.tasks.unshift(newTask); // Añadir a la lista local
-            this.newTask = ""; // Limpiar el input
+            this.tasks.unshift(newTask);
+            this.newTask = "";
         },
         deleteTask(task) {
-            // Filtrar la tarea a eliminar
             this.tasks = this.tasks.filter((t) => t.id !== task.id);
         },
         toggleTaskCompletion(task) {
-            // Alternar el estado de la tarea entre completada y no completada
             task.completed = !task.completed;
         },
     },
@@ -82,7 +79,7 @@ export default {
 h1 {
     font-size: 2.5rem;
     font-weight: bold;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0,0);
 }
 
 .task-input {

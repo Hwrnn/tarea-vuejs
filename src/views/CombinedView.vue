@@ -48,19 +48,18 @@ export default {
     name: "CombinedView",
     data() {
         return {
-            newTask: "", // Campo de entrada para agregar nuevas tareas
-            tasks: [], // Lista de tareas traídas de la API
+            newTask: "",
+            tasks: [],
         };
     },
     created() {
-        this.fetchTasks(); // Llamar a la API al cargar la vista
+        this.fetchTasks();
     },
     methods: {
         fetchTasks() {
-            // Obtener las tareas de la API
             axios.get("https://dummyjson.com/todos")
                 .then((response) => {
-                    this.tasks = response.data.todos; // Almacenar las tareas en el arreglo 'tasks'
+                    this.tasks = response.data.todos;
                 })
                 .catch((error) => {
                     console.error("Error fetching tasks:", error);
@@ -72,19 +71,15 @@ export default {
             const newTask = {
                 todo: this.newTask,
                 completed: false,
-                id: Date.now(), // Crear un ID único para la tarea
+                id: Date.now(),
             };
-
-            // Agregar la nueva tarea manualmente al inicio de la lista
             this.tasks.unshift(newTask);
-            this.newTask = ""; // Limpiar el input
+            this.newTask = "";
         },
         toggleTaskCompletion(task) {
-            // Alternar el estado de la tarea (completado/no completado)
             task.completed = !task.completed;
         },
         deleteTask(task) {
-            // Eliminar la tarea de la lista local
             this.tasks = this.tasks.filter((t) => t.id !== task.id);
         },
     },
@@ -110,7 +105,7 @@ h1 {
 
 .task-input:focus {
     outline: none;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    box-shadow: 0 0 5px rgba(29, 94, 162, 0.5);
 }
 
 .card-title {
